@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="930.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.HR.imjikwoninsertController">
+   <children>
+      <Text layoutX="199.0" layoutY="144.0" strokeType="OUTSIDE" strokeWidth="0.0" text="사원ID">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Text>
+      <TextField fx:id="tf_empNo" editable="false" layoutX="253.0" layoutY="124.0" prefHeight="29.0" prefWidth="462.0">
+         <font>
+            <Font size="15.0" />
+         </font></TextField>
+      <Text layoutX="185.0" layoutY="185.0" strokeType="OUTSIDE" strokeWidth="0.0" text="비밀번호">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Text>
+      <TextField fx:id="tf_empPass" layoutX="253.0" layoutY="165.0" prefHeight="29.0" prefWidth="462.0">
+         <font>
+            <Font size="15.0" />
+         </font></TextField>
+      <Text layoutX="185.0" layoutY="226.0" strokeType="OUTSIDE" strokeWidth="0.0" text="사원이름">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Text>
+      <TextField fx:id="tf_empName" layoutX="256.0" layoutY="206.0" prefHeight="29.0" prefWidth="462.0">
+         <font>
+            <Font size="15.0" />
+         </font></TextField>
+      <Text layoutX="202.0" layoutY="269.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Email">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Text>
+      <TextField fx:id="tf_email" layoutX="253.0" layoutY="249.0" prefHeight="29.0" prefWidth="462.0">
+         <font>
+            <Font size="15.0" />
+         </font></TextField>
+      <Text layoutX="185.0" layoutY="309.0" strokeType="OUTSIDE" strokeWidth="0.0" text="입사일자">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Text>
+      <DatePicker fx:id="dp_hire" layoutX="435.0" layoutY="295.0" prefHeight="23.0" prefWidth="199.0" />
+      <TextField fx:id="tf_hire" layoutX="256.0" layoutY="292.0" prefHeight="29.0" prefWidth="141.0">
+         <font>
+            <Font size="15.0" />
+         </font></TextField>
+      <Text layoutX="184.0" layoutY="349.0" strokeType="OUTSIDE" strokeWidth="0.0" text="퇴사일자">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Text>
+      <TextField fx:id="tf_retire" layoutX="256.0" layoutY="329.0" prefHeight="29.0" prefWidth="141.0">
+         <font>
+            <Font size="15.0" />
+         </font></TextField>
+      <TextField fx:id="tft_salary" layoutX="253.0" layoutY="368.0" prefHeight="29.0" prefWidth="147.0">
+         <font>
+            <Font size="15.0" />
+         </font></TextField>
+      <Text layoutX="406.0" layoutY="389.0" strokeType="OUTSIDE" strokeWidth="0.0" text="(단위: 천원)">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Text>
+      <Text layoutX="213.0" layoutY="388.0" strokeType="OUTSIDE" strokeWidth="0.0" text="급여">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Text>
+      <TextField fx:id="tf_depTel" layoutX="253.0" layoutY="412.0" prefHeight="29.0" prefWidth="462.0">
+         <font>
+            <Font size="15.0" />
+         </font></TextField>
+      <Text layoutX="185.0" layoutY="432.0" strokeType="OUTSIDE" strokeWidth="0.0" text="내선번호">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Text>
+      <TextField fx:id="tf_reg" layoutX="253.0" layoutY="498.0" prefHeight="29.0" prefWidth="462.0">
+         <font>
+            <Font size="15.0" />
+         </font></TextField>
+      <Text layoutX="185.0" layoutY="518.0" strokeType="OUTSIDE" strokeWidth="0.0" text="주민번호">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Text>
+      <Text layoutX="215.0" layoutY="560.0" strokeType="OUTSIDE" strokeWidth="0.0" text="주소">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Text>
+      <TextField fx:id="tf_addr" layoutX="253.0" layoutY="540.0" prefHeight="29.0" prefWidth="462.0">
+         <font>
+            <Font size="15.0" />
+         </font></TextField>
+      <Button fx:id="btnOk" layoutX="353.0" layoutY="621.0" mnemonicParsing="false" onAction="#btnOk" prefHeight="40.0" prefWidth="90.0" style="-fx-background-color: #0f4c82;" text="수정" textFill="WHITE">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Button>
+      <Button fx:id="btnCancle" layoutX="490.0" layoutY="621.0" mnemonicParsing="false" onAction="#btnCancle" prefHeight="40.0" prefWidth="90.0" style="-fx-background-color: #0f4c82;" text="취소" textFill="WHITE">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Button>
+      <Text layoutX="294.0" layoutY="59.0" strokeType="OUTSIDE" strokeWidth="0.0" text="임직원 정보 수정">
+         <font>
+            <Font size="40.0" />
+         </font>
+      </Text>
+      <TextField fx:id="tf_phone" layoutX="253.0" layoutY="451.0" prefHeight="29.0" prefWidth="462.0">
+         <font>
+            <Font size="15.0" />
+         </font></TextField>
+      <Text layoutX="170.0" layoutY="471.0" strokeType="OUTSIDE" strokeWidth="0.0" text="핸드폰번호">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Text>
+      <DatePicker fx:id="dp_retire" layoutX="436.0" layoutY="332.0" prefHeight="23.0" prefWidth="199.0" />
+      <Text layoutX="409.0" layoutY="311.0" strokeType="OUTSIDE" strokeWidth="0.0" text="-&gt;" />
+      <Text layoutX="408.0" layoutY="348.0" strokeType="OUTSIDE" strokeWidth="0.0" text="-&gt;" />
+   </children>
+</AnchorPane>

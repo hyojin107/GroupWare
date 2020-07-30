@@ -1,0 +1,230 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<!-- 급여상세보기 -->
+
+<VBox prefHeight="700.0" prefWidth="930.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.HR.SalaryDetailController">
+   <children>
+      <AnchorPane prefHeight="757.0" prefWidth="930.0">
+         <children>
+            <Text layoutX="84.0" layoutY="62.0" strokeType="OUTSIDE" strokeWidth="0.0" text="급여 명세 상세" wrappingWidth="288.12109375">
+               <font>
+                  <Font size="40.0" />
+               </font>
+            </Text>
+            <VBox alignment="TOP_CENTER" layoutX="243.0" layoutY="133.0" prefHeight="102.0" prefWidth="445.0">
+               <children>
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="급여명세서(회사보관용)">
+                     <font>
+                        <Font size="25.0" />
+                     </font>
+                     <VBox.margin>
+                        <Insets bottom="10.0" />
+                     </VBox.margin>
+                  </Text>
+                  <GridPane prefHeight="53.0" prefWidth="440.0">
+                    <columnConstraints>
+                      <ColumnConstraints hgrow="SOMETIMES" maxWidth="218.0" minWidth="10.0" prefWidth="77.0" />
+                      <ColumnConstraints hgrow="SOMETIMES" maxWidth="368.0" minWidth="10.0" prefWidth="368.0" />
+                    </columnConstraints>
+                    <rowConstraints>
+                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                    </rowConstraints>
+                     <children>
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="성명: ">
+                           <font>
+                              <Font size="15.0" />
+                           </font></Text>
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="지급날짜:" GridPane.rowIndex="1">
+                           <font>
+                              <Font size="15.0" />
+                           </font></Text>
+                        <Text fx:id="tName" strokeType="OUTSIDE" strokeWidth="0.0" text="홍길동" wrappingWidth="224.12109375" GridPane.columnIndex="1">
+                           <font>
+                              <Font size="15.0" />
+                           </font></Text>
+                        <Text fx:id="tDate" strokeType="OUTSIDE" strokeWidth="0.0" text="2020.04월" wrappingWidth="224.12109375" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                           <font>
+                              <Font size="15.0" />
+                           </font></Text>
+                     </children>
+                  </GridPane>
+               </children>
+            </VBox>
+            <VBox layoutX="243.0" layoutY="233.0" prefHeight="408.0" prefWidth="445.0">
+               <children>
+                  <GridPane alignment="CENTER" prefHeight="422.0" prefWidth="445.0" style="-fx-grid-lines-visible: true;">
+                    <columnConstraints>
+                      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                    </columnConstraints>
+                    <rowConstraints>
+                      <RowConstraints maxHeight="119.0" minHeight="0.0" prefHeight="43.0" vgrow="SOMETIMES" />
+                      <RowConstraints maxHeight="176.0" minHeight="10.0" prefHeight="73.0" vgrow="SOMETIMES" />
+                      <RowConstraints maxHeight="105.0" minHeight="10.0" prefHeight="43.0" vgrow="SOMETIMES" />
+                        <RowConstraints maxHeight="293.0" minHeight="10.0" prefHeight="207.0" vgrow="SOMETIMES" />
+                        <RowConstraints maxHeight="228.0" minHeight="10.0" prefHeight="42.0" vgrow="SOMETIMES" />
+                    </rowConstraints>
+                     <children>
+                        <GridPane alignment="CENTER" style="-fx-grid-lines-visible: true;" GridPane.rowIndex="1">
+                          <columnConstraints>
+                            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                          </columnConstraints>
+                          <rowConstraints>
+                            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                          </rowConstraints>
+                           <children>
+                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text="기 본 급" textAlignment="CENTER" wrappingWidth="224.12109375">
+                                 <font>
+                                    <Font size="15.0" />
+                                 </font></Text>
+                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text="상 여 금" textAlignment="CENTER" wrappingWidth="224.12109375" GridPane.rowIndex="1">
+                                 <font>
+                                    <Font size="15.0" />
+                                 </font></Text>
+                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text="식 대 지 원" textAlignment="CENTER" wrappingWidth="224.12109375" GridPane.rowIndex="2">
+                                 <font>
+                                    <Font size="15.0" />
+                                 </font></Text>
+                              <Text fx:id="text1" strokeType="OUTSIDE" strokeWidth="0.0" text="기본급" textAlignment="CENTER" wrappingWidth="224.12109375" GridPane.columnIndex="1">
+                                 <font>
+                                    <Font size="15.0" />
+                                 </font></Text>
+                              <Text fx:id="text2" strokeType="OUTSIDE" strokeWidth="0.0" text="상여금" textAlignment="CENTER" wrappingWidth="224.12109375" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                                 <font>
+                                    <Font size="15.0" />
+                                 </font></Text>
+                              <Text fx:id="text3" strokeType="OUTSIDE" strokeWidth="0.0" text="식대지원" textAlignment="CENTER" wrappingWidth="224.12109375" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                                 <font>
+                                    <Font size="15.0" />
+                                 </font></Text>
+                           </children>
+                        </GridPane>
+                        <GridPane alignment="CENTER" prefHeight="173.0" prefWidth="445.0" style="-fx-grid-lines-visible: true;" GridPane.rowIndex="3">
+                           <columnConstraints>
+                              <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                              <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                           </columnConstraints>
+                           <rowConstraints>
+                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                           </rowConstraints>
+                           <children>
+                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text="국 민 연 금" textAlignment="CENTER" wrappingWidth="224.12109375">
+                                 <font>
+                                    <Font size="15.0" />
+                                 </font></Text>
+                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text="건 강 보 험" textAlignment="CENTER" wrappingWidth="224.12109375" GridPane.rowIndex="1">
+                                 <font>
+                                    <Font size="15.0" />
+                                 </font></Text>
+                              <Text fill="#7c7474" strokeType="OUTSIDE" strokeWidth="0.0" text="ㄴ장 기 요 양 " textAlignment="CENTER" wrappingWidth="224.12109375" GridPane.rowIndex="2">
+                                 <font>
+                                    <Font size="15.0" />
+                                 </font></Text>
+                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text="고 용 보 험" textAlignment="CENTER" wrappingWidth="224.12109375" GridPane.rowIndex="3">
+                                 <font>
+                                    <Font size="15.0" />
+                                 </font></Text>
+                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text="근 로 소 득 세 (간이세액)" textAlignment="CENTER" wrappingWidth="224.12109375" GridPane.rowIndex="4">
+                                 <font>
+                                    <Font size="15.0" />
+                                 </font></Text>
+                              <Text fill="#7c7474" strokeType="OUTSIDE" strokeWidth="0.0" text="ㄴ지방소득세" textAlignment="CENTER" wrappingWidth="224.12109375" GridPane.rowIndex="5">
+                                 <font>
+                                    <Font size="15.0" />
+                                 </font></Text>
+                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text="공 제 계" textAlignment="CENTER" wrappingWidth="224.12109375" GridPane.rowIndex="6">
+                                 <font>
+                                    <Font size="15.0" />
+                                 </font></Text>
+                              <Text fx:id="text4" strokeType="OUTSIDE" strokeWidth="0.0" text="갑근세" textAlignment="CENTER" wrappingWidth="224.12109375" GridPane.columnIndex="1">
+                                 <font>
+                                    <Font size="15.0" />
+                                 </font></Text>
+                              <Text fx:id="text5" strokeType="OUTSIDE" strokeWidth="0.0" text="갑근세" textAlignment="CENTER" wrappingWidth="224.12109375" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                                 <font>
+                                    <Font size="15.0" />
+                                 </font></Text>
+                              <Text fx:id="text6" strokeType="OUTSIDE" strokeWidth="0.0" text="갑근세" textAlignment="CENTER" wrappingWidth="224.12109375" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                                 <font>
+                                    <Font size="15.0" />
+                                 </font></Text>
+                              <Text fx:id="text7" strokeType="OUTSIDE" strokeWidth="0.0" text="갑근세" textAlignment="CENTER" wrappingWidth="224.12109375" GridPane.columnIndex="1" GridPane.rowIndex="3">
+                                 <font>
+                                    <Font size="15.0" />
+                                 </font></Text>
+                              <Text fx:id="text8" strokeType="OUTSIDE" strokeWidth="0.0" text="갑근세" textAlignment="CENTER" wrappingWidth="224.12109375" GridPane.columnIndex="1" GridPane.rowIndex="4">
+                                 <font>
+                                    <Font size="15.0" />
+                                 </font></Text>
+                              <Text fx:id="text9" strokeType="OUTSIDE" strokeWidth="0.0" text="갑근세" textAlignment="CENTER" wrappingWidth="224.12109375" GridPane.columnIndex="1" GridPane.rowIndex="5">
+                                 <font>
+                                    <Font size="15.0" />
+                                 </font></Text>
+                              <Text fx:id="text10" strokeType="OUTSIDE" strokeWidth="0.0" text="갑근세" textAlignment="CENTER" wrappingWidth="224.12109375" GridPane.columnIndex="1" GridPane.rowIndex="6">
+                                 <font>
+                                    <Font size="15.0" />
+                                 </font></Text>
+                           </children>
+                        </GridPane>
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="지급내역" textAlignment="CENTER" wrappingWidth="445.12109375">
+                           <font>
+                              <Font size="16.0" />
+                           </font></Text>
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="공제내역" textAlignment="CENTER" wrappingWidth="445.12109375" GridPane.rowIndex="2">
+                           <font>
+                              <Font size="16.0" />
+                           </font></Text>
+                        <HBox prefHeight="21.0" prefWidth="200.0" style="-fx-background-color: skyblue;" GridPane.rowIndex="4">
+                           <children>
+                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text="실지급액: " textAlignment="CENTER" wrappingWidth="173.12109375">
+                                 <HBox.margin>
+                                    <Insets left="35.0" top="15.0" />
+                                 </HBox.margin>
+                                 <font>
+                                    <Font size="15.0" />
+                                 </font>
+                              </Text>
+                              <Text fx:id="total" strokeType="OUTSIDE" strokeWidth="0.0" text="3,283,679" wrappingWidth="189.708984375">
+                                 <HBox.margin>
+                                    <Insets top="15.0" />
+                                 </HBox.margin>
+                                 <font>
+                                    <Font size="15.0" />
+                                 </font>
+                              </Text>
+                           </children>
+                        </HBox>
+                     </children>
+                  </GridPane>
+               </children>
+            </VBox>
+            <Line endX="399.0" layoutX="315.0" layoutY="112.0" startX="-100.0" />
+            <Line endX="399.0" layoutX="315.0" layoutY="668.0" startX="-100.0" />
+            <Line endX="87.5" endY="407.5" layoutX="127.0" layoutY="261.0" startX="87.5" startY="-148.5" />
+            <Line endX="87.5" endY="407.5" layoutX="627.0" layoutY="261.0" startX="87.5" startY="-148.5" />
+            <Button fx:id="btnBack" layoutX="770.0" layoutY="27.0" mnemonicParsing="false" onAction="#btnBackClick" prefHeight="40.0" prefWidth="40.0" style="-fx-background-color: #828d94;" text="☜" textFill="WHITE" />
+         </children>
+      </AnchorPane>
+   </children>
+</VBox>

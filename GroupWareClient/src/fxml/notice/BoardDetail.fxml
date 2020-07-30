@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.text.Font?>
+
+<!-- 공지상세보기 -->
+
+<VBox prefHeight="700.0" prefWidth="930.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.notice.BoardDetailController">
+   <children>
+      <AnchorPane prefHeight="120.0" prefWidth="930.0">
+         <children>
+            <Label alignment="CENTER" layoutX="217.0" layoutY="91.0" prefHeight="70.0" prefWidth="534.0" style="-fx-border-color: black;" text="자 유 게 시 판 상 세 열 람">
+               <font>
+                  <Font size="35.0" />
+               </font>
+            </Label>
+            <Button fx:id="btnBack" layoutX="711.0" layoutY="41.0" mnemonicParsing="false" onAction="#btnbackclick" prefHeight="40.0" prefWidth="40.0" style="-fx-background-color: #828d94 #828d94;" text="☜" textFill="WHITE" />
+         </children>
+      </AnchorPane>
+      <AnchorPane prefHeight="445.0" prefWidth="930.0">
+         <children>
+            <GridPane layoutX="217.0" layoutY="9.0" prefHeight="352.0" prefWidth="534.0" style="-fx-border-color: black; -fx-border-radius: 1%; -fx-grid-lines-visible: true;">
+              <columnConstraints>
+                <ColumnConstraints hgrow="SOMETIMES" maxWidth="206.0" minWidth="10.0" prefWidth="112.0" />
+                <ColumnConstraints hgrow="SOMETIMES" maxWidth="395.0" minWidth="10.0" prefWidth="395.0" />
+              </columnConstraints>
+              <rowConstraints>
+                <RowConstraints maxHeight="80.0" minHeight="6.0" prefHeight="31.0" vgrow="SOMETIMES" />
+                <RowConstraints maxHeight="166.0" minHeight="2.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints maxHeight="166.0" minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                <RowConstraints maxHeight="212.0" minHeight="10.0" prefHeight="168.0" vgrow="SOMETIMES" />
+              </rowConstraints>
+               <children>
+                  <Label alignment="CENTER" prefHeight="39.0" prefWidth="137.0" text="제목 : ">
+                     <font>
+                        <Font size="15.0" />
+                     </font></Label>
+                  <Label alignment="CENTER" prefHeight="39.0" prefWidth="137.0" text="작성일 : " GridPane.rowIndex="1">
+                     <font>
+                        <Font size="15.0" />
+                     </font></Label>
+                  <Label alignment="CENTER" prefHeight="39.0" prefWidth="137.0" text="작성자 : " GridPane.rowIndex="2">
+                     <font>
+                        <Font size="15.0" />
+                     </font></Label>
+                  <Label alignment="CENTER" prefHeight="39.0" prefWidth="137.0" text="내용 : " GridPane.rowIndex="3">
+                     <font>
+                        <Font size="15.0" />
+                     </font></Label>
+                  <TextField fx:id="tfBoardTitle" editable="false" GridPane.columnIndex="1">
+                     <font>
+                        <Font size="15.0" />
+                     </font></TextField>
+                  <TextField fx:id="tfBoardDate" editable="false" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                     <font>
+                        <Font size="15.0" />
+                     </font></TextField>
+                  <TextField fx:id="tfBoardName" editable="false" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                     <font>
+                        <Font size="15.0" />
+                     </font></TextField>
+                  <TextArea fx:id="taBoardCon" editable="false" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="3">
+                     <font>
+                        <Font size="15.0" />
+                     </font></TextArea>
+               </children>
+            </GridPane>
+            <Line endX="-100.0" layoutX="186.0" layoutY="15.0" startX="-100.0" />
+         </children>
+      </AnchorPane>
+      <HBox prefHeight="142.0" prefWidth="930.0" />
+      <AnchorPane prefHeight="317.0" prefWidth="930.0">
+         <children>
+            <Button fx:id="btnEdit" layoutX="375.0" layoutY="12.0" mnemonicParsing="false" onAction="#btnEditClick" prefHeight="40.0" prefWidth="90.0" style="-fx-background-color: #0f4c82;" text="수정" textFill="WHITE">
+               <font>
+                  <Font size="15.0" />
+               </font></Button>
+            <Button fx:id="btnDelete" layoutX="557.0" layoutY="12.0" mnemonicParsing="false" onAction="#btndeleteClick" prefHeight="40.0" prefWidth="90.0" style="-fx-background-color: #0f4c82;" text="삭제" textFill="WHITE">
+               <font>
+                  <Font size="15.0" />
+               </font></Button>
+         </children>
+      </AnchorPane>
+   </children>
+</VBox>

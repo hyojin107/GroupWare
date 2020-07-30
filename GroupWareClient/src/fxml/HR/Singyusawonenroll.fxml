@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="730.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.HR.SingyusawonenrollController">
+   <children>
+      <TextField alignment="CENTER" layoutX="220.0" layoutY="29.0" text="신규 사원 등록">
+         <font>
+            <Font size="35.0" />
+         </font>
+      </TextField>
+      <Text layoutX="147.0" layoutY="146.0" strokeType="OUTSIDE" strokeWidth="0.0" text="비밀번호 :">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Text>
+      <Text layoutX="142.0" layoutY="189.0" strokeType="OUTSIDE" strokeWidth="0.0" text="사원 이름 :">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Text>
+      <Text layoutX="170.0" layoutY="235.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Email :">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Text>
+      <Text layoutX="177.0" layoutY="277.0" strokeType="OUTSIDE" strokeWidth="0.0" text="급여 :">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Text>
+      <Text layoutX="146.0" layoutY="321.0" strokeType="OUTSIDE" strokeWidth="0.0" text="내선번호 :">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Text>
+      <Text layoutX="131.0" layoutY="363.0" strokeType="OUTSIDE" strokeWidth="0.0" text="핸드폰번호 :">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Text>
+      <Text layoutX="426.0" layoutY="410.0" strokeType="OUTSIDE" strokeWidth="0.0" text="직급 :">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Text>
+      <Text layoutX="147.0" layoutY="456.0" strokeType="OUTSIDE" strokeWidth="0.0" text="주민번호 :">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Text>
+      <Text layoutX="161.0" layoutY="410.0" strokeType="OUTSIDE" strokeWidth="0.0" text="부서명 :">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Text>
+      <Text layoutX="177.0" layoutY="498.0" strokeType="OUTSIDE" strokeWidth="0.0" text="주소 :">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Text>
+      <TextField fx:id="password" layoutX="221.0" layoutY="126.0" prefHeight="30.0" prefWidth="444.0">
+         <font>
+            <Font size="15.0" />
+         </font></TextField>
+      <TextField fx:id="name" layoutX="221.0" layoutY="167.0" prefHeight="30.0" prefWidth="444.0">
+         <font>
+            <Font size="15.0" />
+         </font></TextField>
+      <TextField fx:id="mail" layoutX="221.0" layoutY="214.0" prefHeight="30.0" prefWidth="444.0">
+         <font>
+            <Font size="15.0" />
+         </font></TextField>
+      <TextField fx:id="money" layoutX="218.0" layoutY="257.0" prefHeight="30.0" prefWidth="444.0">
+         <font>
+            <Font size="15.0" />
+         </font></TextField>
+      <TextField fx:id="naesunnum" layoutX="218.0" layoutY="300.0" prefHeight="30.0" prefWidth="444.0">
+         <font>
+            <Font size="15.0" />
+         </font></TextField>
+      <TextField fx:id="phonenum" layoutX="218.0" layoutY="343.0" prefHeight="30.0" prefWidth="444.0">
+         <font>
+            <Font size="15.0" />
+         </font></TextField>
+      <TextField fx:id="identity" layoutX="218.0" layoutY="435.0" prefHeight="30.0" prefWidth="444.0">
+         <font>
+            <Font size="15.0" />
+         </font></TextField>
+      <TextField fx:id="juso" layoutX="218.0" layoutY="479.0" prefHeight="30.0" prefWidth="444.0">
+         <font>
+            <Font size="15.0" />
+         </font></TextField>
+      <ComboBox fx:id="comjoblevel" layoutX="473.0" layoutY="393.0" prefHeight="23.0" prefWidth="192.0" />
+      <ComboBox fx:id="comdepartnm" layoutX="221.0" layoutY="393.0" prefHeight="23.0" prefWidth="192.0" />
+      <Button fx:id="complete" layoutX="287.0" layoutY="623.0" mnemonicParsing="false" onAction="#btncomplete" prefHeight="40.0" prefWidth="90.0" style="-fx-background-color: #0f4c82;" text="등록" textFill="WHITE">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Button>
+      <Button fx:id="initail" layoutX="428.0" layoutY="623.0" mnemonicParsing="false" onAction="#btninitial" prefHeight="40.0" prefWidth="90.0" style="-fx-background-color: #0f4c82;" text="초기화" textFill="WHITE">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Button>
+   </children>
+</AnchorPane>

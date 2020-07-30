@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<!-- 급여명세서리스트 -->
+
+<VBox prefHeight="700.0" prefWidth="930.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.HR.SalaryListController">
+   <children>
+      <AnchorPane prefHeight="757.0" prefWidth="930.0">
+         <children>
+            <Text layoutX="97.0" layoutY="84.0" strokeType="OUTSIDE" strokeWidth="0.0" text="급여명세서" wrappingWidth="232.12109375">
+               <font>
+                  <Font size="40.0" />
+               </font>
+            </Text>
+            <TableView fx:id="tbSalary" layoutX="97.0" layoutY="118.0" onMouseClicked="#tbclick" prefHeight="480.0" prefWidth="753.0">
+              <columns>
+                <TableColumn fx:id="colTitle" prefWidth="546.0" text="제목" />
+                  <TableColumn fx:id="colName" prefWidth="206.0" text="담당자" />
+              </columns>
+            </TableView>
+            <ComboBox fx:id="comboYear" layoutX="676.0" layoutY="59.0" onAction="#comboClick" prefHeight="23.0" prefWidth="174.0" promptText="작성연도" />
+         </children>
+      </AnchorPane>
+   </children>
+</VBox>

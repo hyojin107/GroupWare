@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="930.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.mypage.MypageController">
+   <children>
+      <ImageView fx:id="img_photo" fitHeight="150.0" fitWidth="200.0" layoutX="202.0" layoutY="46.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../img/photoDefult.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="img_sign" fitHeight="80.0" fitWidth="140.0" layoutX="453.0" layoutY="81.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../img/signDefult.jpg" />
+         </image>
+      </ImageView>
+      <Label fx:id="lb_name" layoutX="356.0" layoutY="227.0" text="홍길동">
+         <font>
+            <Font size="25.0" />
+         </font>
+      </Label>
+      <Text layoutX="303.0" layoutY="299.0" strokeType="OUTSIDE" strokeWidth="0.0" text="부서명 :">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Text>
+      <Label fx:id="lb_depart" layoutX="389.0" layoutY="285.0" text="Label">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <Text layoutX="244.0" layoutY="341.0" strokeType="OUTSIDE" strokeWidth="0.0" text="부서 내선번호 :">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Text>
+      <Label fx:id="lb_depTel" layoutX="388.0" layoutY="327.0" text="Label">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <Text layoutX="303.0" layoutY="382.0" strokeType="OUTSIDE" strokeWidth="0.0" text="이메일 :">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Text>
+      <Label fx:id="lb_email" layoutX="387.0" layoutY="368.0" text="Label">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <Text layoutX="283.0" layoutY="422.0" strokeType="OUTSIDE" strokeWidth="0.0" text="입사일자 :">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Text>
+      <Label fx:id="lb_phone" layoutX="384.0" layoutY="450.0" text="Label">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <Text layoutX="318.0" layoutY="504.0" strokeType="OUTSIDE" strokeWidth="0.0" text="주소 :">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Text>
+      <Label fx:id="lb_hireDate" layoutX="386.0" layoutY="408.0" text="Label">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <Text layoutX="258.0" layoutY="464.0" strokeType="OUTSIDE" strokeWidth="0.0" text="휴대폰 번호 :">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Text>
+      <Label fx:id="lb_addr" layoutX="387.0" layoutY="490.0" text="Label">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <Button fx:id="btn_modify" layoutX="344.0" layoutY="615.0" mnemonicParsing="false" onAction="#btn_modifyClicked" prefHeight="40.0" prefWidth="100.0" style="-fx-background-color: #0f4c82;" text="수정하기" textFill="WHITE">
+         <font>
+            <Font size="15.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </Button>
+   </children>
+</AnchorPane>

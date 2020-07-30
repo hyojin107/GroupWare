@@ -1,0 +1,233 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.mainCtr.MainPageController">
+   <children>
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#d0d4d3bf" height="960.0" stroke="#ffffff00" strokeType="INSIDE" width="1280.0" />
+      <BorderPane fx:id="mainborder" layoutY="-6.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="960.0" prefWidth="1280.0" style="-fx-background-color: white;">
+         <top>
+            <AnchorPane maxHeight="160.0" minHeight="170.0" prefHeight="170.0" prefWidth="0.0" BorderPane.alignment="CENTER">
+               <children>
+                  <AnchorPane layoutY="4.0" prefHeight="131.0" prefWidth="1280.0" style="-fx-background-color: white;">
+                     <children>
+                        <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#d4e6f4" height="161.0" layoutY="1.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="1280.0" />
+                        <Label fx:id="lb_loginUser" layoutX="1050.0" layoutY="28.0" prefHeight="25.0" prefWidth="70.0" text="OOO" textAlignment="RIGHT">
+                           <font>
+                              <Font size="20.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="1112.0" layoutY="28.0" prefHeight="25.0" prefWidth="27.0" text="님">
+                           <font>
+                              <Font size="20.0" />
+                           </font>
+                        </Label>
+                        <Button fx:id="btn_out" layoutX="1139.0" layoutY="26.0" mnemonicParsing="false" onAction="#btnOut" prefHeight="28.0" prefWidth="82.0" style="-fx-background-color: #828d94;" text="로그아웃" textFill="WHITE">
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
+                           <font>
+                              <Font size="13.0" />
+                           </font>
+                        </Button>
+                        <Rectangle fx:id="top_mailBox" arcHeight="5.0" arcWidth="5.0" fill="#1f93ff00" height="60.0" layoutX="287.0" layoutY="78.0" stroke="#f1c36e" strokeType="INSIDE" strokeWidth="5.0" width="132.0" />
+                        <Rectangle fx:id="top_paymentBox" arcHeight="5.0" arcWidth="5.0" fill="#1f93ff00" height="60.0" layoutX="428.0" layoutY="79.0" stroke="#f1c36e" strokeType="INSIDE" strokeWidth="5.0" width="132.0" />
+                        <Rectangle fx:id="top_HRBox" arcHeight="5.0" arcWidth="5.0" fill="#1f93ff00" height="60.0" layoutX="567.0" layoutY="79.0" stroke="#f1c36e" strokeType="INSIDE" strokeWidth="5.0" width="99.0" />
+                        <Rectangle fx:id="top_planBox" arcHeight="5.0" arcWidth="5.0" fill="#1f93ff00" height="61.0" layoutX="676.0" layoutY="79.0" stroke="#f1c36e" strokeType="INSIDE" strokeWidth="5.0" width="132.0" />
+                        <Rectangle fx:id="top_noticeBox" arcHeight="5.0" arcWidth="5.0" fill="#1f93ff00" height="61.0" layoutX="822.0" layoutY="79.0" stroke="#f1c36e" strokeType="INSIDE" strokeWidth="5.0" width="119.0" />
+                        <Rectangle fx:id="top_addrBox" arcHeight="5.0" arcWidth="5.0" fill="#1f93ff00" height="60.0" layoutX="954.0" layoutY="79.0" stroke="#f1c36e" strokeType="INSIDE" strokeWidth="5.0" width="123.0" />
+                        <Rectangle fx:id="top_myPageBox" arcHeight="5.0" arcWidth="5.0" fill="#1f93ff00" height="60.0" layoutX="1095.0" layoutY="79.0" stroke="#f1c36e" strokeType="INSIDE" strokeWidth="5.0" width="118.0" />
+                        <HBox layoutX="287.0" layoutY="88.0" prefHeight="41.0" prefWidth="945.0" spacing="5.0">
+                           <children>
+                              <Rectangle arcHeight="5.0" arcWidth="1.0" fill="WHITE" height="33.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="1.0">
+                                 <HBox.margin>
+                                    <Insets top="5.0" />
+                                 </HBox.margin>
+                              </Rectangle>
+                              <ImageView fx:id="top_mail" fitHeight="55.0" fitWidth="109.0" onMouseClicked="#topMail" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../../img/emaillogo.png" />
+                                 </image>
+                                 <HBox.margin>
+                                    <Insets left="7.0" right="7.0" />
+                                 </HBox.margin>
+                                 <cursor>
+                                    <Cursor fx:constant="HAND" />
+                                 </cursor>
+                              </ImageView>
+                              <Rectangle arcHeight="5.0" arcWidth="1.0" fill="WHITE" height="33.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="1.0">
+                                 <HBox.margin>
+                                    <Insets top="5.0" />
+                                 </HBox.margin>
+                              </Rectangle>
+                              <ImageView fx:id="top_payment" fitHeight="43.0" fitWidth="133.0" onMouseClicked="#topPayment" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../../img/paylogo.png" />
+                                 </image>
+                                 <HBox.margin>
+                                    <Insets left="7.0" right="7.0" />
+                                 </HBox.margin>
+                                 <cursor>
+                                    <Cursor fx:constant="HAND" />
+                                 </cursor>
+                              </ImageView>
+                              <Rectangle arcHeight="5.0" arcWidth="1.0" fill="WHITE" height="33.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="1.0">
+                                 <HBox.margin>
+                                    <Insets top="5.0" />
+                                 </HBox.margin>
+                              </Rectangle>
+                              <ImageView fx:id="top_HR" fitHeight="47.0" fitWidth="96.0" onMouseClicked="#topHR" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../../img/HRlogo.png" />
+                                 </image>
+                                 <HBox.margin>
+                                    <Insets left="7.0" right="7.0" />
+                                 </HBox.margin>
+                                 <cursor>
+                                    <Cursor fx:constant="HAND" />
+                                 </cursor>
+                              </ImageView>
+                              <Rectangle arcHeight="5.0" arcWidth="1.0" fill="WHITE" height="33.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="1.0">
+                                 <HBox.margin>
+                                    <Insets top="5.0" />
+                                 </HBox.margin>
+                              </Rectangle>
+                              <ImageView fx:id="top_plan" fitHeight="49.0" fitWidth="119.0" onMouseClicked="#topPlan" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../../img/planlogo.png" />
+                                 </image>
+                                 <HBox.margin>
+                                    <Insets left="7.0" right="7.0" />
+                                 </HBox.margin>
+                                 <cursor>
+                                    <Cursor fx:constant="HAND" />
+                                 </cursor>
+                              </ImageView>
+                              <Rectangle arcHeight="5.0" arcWidth="1.0" fill="WHITE" height="33.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="1.0">
+                                 <HBox.margin>
+                                    <Insets top="5.0" />
+                                 </HBox.margin>
+                              </Rectangle>
+                              <ImageView fx:id="top_notice" fitHeight="55.0" fitWidth="109.0" onMouseClicked="#topNotice" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../../img/boardlogo.png" />
+                                 </image>
+                                 <HBox.margin>
+                                    <Insets left="7.0" right="7.0" />
+                                 </HBox.margin>
+                                 <cursor>
+                                    <Cursor fx:constant="HAND" />
+                                 </cursor>
+                              </ImageView>
+                              <Rectangle arcHeight="5.0" arcWidth="1.0" fill="WHITE" height="33.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="1.0">
+                                 <HBox.margin>
+                                    <Insets top="5.0" />
+                                 </HBox.margin>
+                              </Rectangle>
+                              <ImageView fx:id="top_addr" fitHeight="55.0" fitWidth="109.0" onMouseClicked="#topAddr" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../../img/callbooklogo.png" />
+                                 </image>
+                                 <HBox.margin>
+                                    <Insets left="7.0" right="7.0" />
+                                 </HBox.margin>
+                                 <cursor>
+                                    <Cursor fx:constant="HAND" />
+                                 </cursor>
+                              </ImageView>
+                              <Rectangle arcHeight="5.0" arcWidth="1.0" fill="WHITE" height="33.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="1.0">
+                                 <HBox.margin>
+                                    <Insets top="5.0" />
+                                 </HBox.margin>
+                              </Rectangle>
+                              <ImageView fx:id="top_myPage" fitHeight="45.0" fitWidth="119.0" onMouseClicked="#topMyPage" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../../img/mylogo.png" />
+                                 </image>
+                                 <HBox.margin>
+                                    <Insets left="7.0" right="7.0" />
+                                 </HBox.margin>
+                                 <cursor>
+                                    <Cursor fx:constant="HAND" />
+                                 </cursor>
+                              </ImageView>
+                              <Rectangle arcHeight="5.0" arcWidth="1.0" fill="WHITE" height="33.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="1.0">
+                                 <HBox.margin>
+                                    <Insets top="5.0" />
+                                 </HBox.margin>
+                              </Rectangle>
+                           </children>
+                        </HBox>
+                        <ImageView fitHeight="128.0" fitWidth="231.0" layoutX="21.0" layoutY="32.0" onMouseClicked="#mainLogo" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../img/logo1.png" />
+                           </image>
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
+                        </ImageView>
+                     </children>
+                  </AnchorPane>
+               </children>
+            </AnchorPane>
+         </top>
+         <bottom>
+            <ImageView fitHeight="85.0" fitWidth="1377.0" pickOnBounds="true" preserveRatio="true" BorderPane.alignment="CENTER">
+               <image>
+                  <Image url="@../../img/bottom.png" />
+               </image>
+            </ImageView>
+         </bottom>
+         <center>
+            <AnchorPane BorderPane.alignment="CENTER">
+               <children>
+                  <ImageView fx:id="mainImg" fitHeight="653.0" fitWidth="958.0" layoutY="22.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../img/GWmain.jpg" />
+                     </image>
+                  </ImageView>
+                  <ImageView fx:id="imgphoto" fitHeight="150.0" fitWidth="200.0" layoutX="1022.0" layoutY="35.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../img/photoDefult.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fx:id="btnEnd" fitHeight="150.0" fitWidth="200.0" layoutX="1028.0" layoutY="207.0" onMouseClicked="#btnEndclick" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../img/goHome.png" />
+                     </image>
+                     <cursor>
+                        <Cursor fx:constant="CLOSED_HAND" />
+                     </cursor>
+                  </ImageView>
+                  <ImageView fitHeight="90.0" fitWidth="191.0" layoutX="1033.0" layoutY="460.0" onMouseClicked="#btnPay" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../img/mainicon1.png" />
+                     </image>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </ImageView>
+                  <ImageView fitHeight="90.0" fitWidth="191.0" layoutX="1033.0" layoutY="349.0" onMouseClicked="#btnVac" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../img/mainicon2.png" />
+                     </image>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </ImageView>
+               </children>
+            </AnchorPane>
+         </center>
+      </BorderPane>
+   </children>
+</AnchorPane>

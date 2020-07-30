@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Pagination?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="930.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.addr.myaddrbookController">
+   <children>
+      <Text layoutX="85.0" layoutY="116.0" strokeType="OUTSIDE" strokeWidth="0.0" text="나의 주소록">
+         <font>
+            <Font size="40.0" />
+         </font>
+      </Text>
+      <ComboBox fx:id="cbGroup" layoutX="655.0" layoutY="123.0" onAction="#cbGroupClick" prefHeight="29.0" prefWidth="232.0" promptText="그룹별 검색" />
+      <TableView fx:id="mytableview" layoutX="65.0" layoutY="176.0" prefHeight="411.0" prefWidth="819.0">
+        <columns>
+          <TableColumn fx:id="groupname" prefWidth="174.0" text="그룹명" />
+            <TableColumn fx:id="empname" prefWidth="167.0" text="이름" />
+            <TableColumn fx:id="empmail" prefWidth="240.0" text="Email" />
+            <TableColumn fx:id="empphone" prefWidth="237.0" text="휴대전화" />
+        </columns>
+      </TableView>
+      <Button fx:id="btnAdd" layoutX="785.0" layoutY="603.0" mnemonicParsing="false" onAction="#btnAddClick" text="주소록 추가">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Button>
+      <Pagination fx:id="pagination" layoutX="375.0" layoutY="637.0" prefHeight="53.0" prefWidth="200.0" />
+      <Button fx:id="btnDelete" layoutX="575.0" layoutY="603.0" mnemonicParsing="false" onAction="#btnDeleteClick" text="선택삭제">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Button>
+      <Button fx:id="btngroup" layoutX="679.0" layoutY="603.0" mnemonicParsing="false" onAction="#btngroupClick" text="그룹 편집">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Button>
+   </children>
+</AnchorPane>

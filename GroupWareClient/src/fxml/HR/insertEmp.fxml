@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="930.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.HR.insertEmpController">
+   <children>
+      <Text layoutX="198.0" layoutY="104.0" strokeType="OUTSIDE" strokeWidth="0.0" text="사원ID">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Text>
+      <TextField fx:id="tfempid" layoutX="252.0" layoutY="84.0" prefHeight="29.0" prefWidth="462.0">
+         <font>
+            <Font size="15.0" />
+         </font></TextField>
+      <Text layoutX="184.0" layoutY="145.0" strokeType="OUTSIDE" strokeWidth="0.0" text="비밀번호">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Text>
+      <TextField fx:id="tfpw" layoutX="252.0" layoutY="125.0" prefHeight="29.0" prefWidth="462.0">
+         <font>
+            <Font size="15.0" />
+         </font></TextField>
+      <Text layoutX="184.0" layoutY="186.0" strokeType="OUTSIDE" strokeWidth="0.0" text="사원이름">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Text>
+      <TextField fx:id="tfempname" layoutX="252.0" layoutY="166.0" prefHeight="29.0" prefWidth="462.0">
+         <font>
+            <Font size="15.0" />
+         </font></TextField>
+      <Text layoutX="214.0" layoutY="226.0" strokeType="OUTSIDE" strokeWidth="0.0" text="사진">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Text>
+      <TextField fx:id="tfphoto" layoutX="252.0" layoutY="206.0" prefHeight="29.0" prefWidth="355.0">
+         <font>
+            <Font size="15.0" />
+         </font></TextField>
+      <Button fx:id="btnphoto" layoutX="618.0" layoutY="207.0" mnemonicParsing="false" prefHeight="23.0" prefWidth="96.0" style="-fx-background-color: #0f4c82#0f4c82 #0f4c82#0f4c82;" text="첨부파일" textFill="WHITE">
+         <font>
+            <Font size="15.0" />
+         </font></Button>
+      <Text layoutX="201.0" layoutY="266.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Email">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Text>
+      <TextField fx:id="tfemail" layoutX="252.0" layoutY="246.0" prefHeight="29.0" prefWidth="462.0">
+         <font>
+            <Font size="15.0" />
+         </font></TextField>
+      <Text layoutX="184.0" layoutY="306.0" strokeType="OUTSIDE" strokeWidth="0.0" text="입사일자">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Text>
+      <TextField fx:id="tfdate" layoutX="252.0" layoutY="286.0" prefHeight="29.0" prefWidth="462.0">
+         <font>
+            <Font size="15.0" />
+         </font></TextField>
+      <Text layoutX="214.0" layoutY="346.0" strokeType="OUTSIDE" strokeWidth="0.0" text="급여">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Text>
+      <TextField fx:id="tftsalary" layoutX="252.0" layoutY="326.0" prefHeight="29.0" prefWidth="462.0">
+         <font>
+            <Font size="15.0" />
+         </font></TextField>
+      <TextField fx:id="tftel" layoutX="252.0" layoutY="365.0" prefHeight="29.0" prefWidth="462.0">
+         <font>
+            <Font size="15.0" />
+         </font></TextField>
+      <Text layoutX="184.0" layoutY="385.0" strokeType="OUTSIDE" strokeWidth="0.0" text="내선번호">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Text>
+      <TextField fx:id="tfph" layoutX="252.0" layoutY="409.0" prefHeight="29.0" prefWidth="462.0">
+         <font>
+            <Font size="15.0" />
+         </font></TextField>
+      <Text layoutX="169.0" layoutY="429.0" strokeType="OUTSIDE" strokeWidth="0.0" text="휴대폰번호">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Text>
+      <ComboBox fx:id="combodepartment" layoutX="252.0" layoutY="452.0" prefHeight="23.0" prefWidth="197.0" />
+      <Text layoutX="198.0" layoutY="470.0" strokeType="OUTSIDE" strokeWidth="0.0" text="부서명">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Text>
+      <ComboBox fx:id="combogarde" layoutX="518.0" layoutY="452.0" prefHeight="23.0" prefWidth="197.0" />
+      <Text layoutX="475.0" layoutY="469.0" strokeType="OUTSIDE" strokeWidth="0.0" text="직급">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Text>
+      <TextField fx:id="tfregno" layoutX="252.0" layoutY="486.0" prefHeight="29.0" prefWidth="462.0">
+         <font>
+            <Font size="15.0" />
+         </font></TextField>
+      <Text layoutX="184.0" layoutY="506.0" strokeType="OUTSIDE" strokeWidth="0.0" text="주민번호">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Text>
+      <Text layoutX="214.0" layoutY="548.0" strokeType="OUTSIDE" strokeWidth="0.0" text="주소">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Text>
+      <TextField fx:id="tfaddr1" layoutX="252.0" layoutY="528.0" prefHeight="29.0" prefWidth="462.0">
+         <font>
+            <Font size="15.0" />
+         </font></TextField>
+      <Text layoutX="184.0" layoutY="587.0" strokeType="OUTSIDE" strokeWidth="0.0" text="상세주소">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Text>
+      <TextField fx:id="tfaddr2" layoutX="253.0" layoutY="567.0" prefHeight="29.0" prefWidth="462.0">
+         <font>
+            <Font size="15.0" />
+         </font></TextField>
+      <Button fx:id="btnregister" layoutX="340.0" layoutY="623.0" mnemonicParsing="false" onAction="#btnregisterclick" prefHeight="40.0" prefWidth="90.0" style="-fx-background-color: #0f4c82#0f4c82;" text="등록" textFill="WHITE">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Button>
+      <Button fx:id="btnreset" layoutX="486.0" layoutY="623.0" mnemonicParsing="false" onAction="#btnresetclick" prefHeight="40.0" prefWidth="90.0" style="-fx-background-color: #0f4c82;" text="초기화" textFill="WHITE">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Button>
+      <Text layoutX="351.0" layoutY="58.0" strokeType="OUTSIDE" strokeWidth="0.0" text="사원정보등록">
+         <font>
+            <Font size="40.0" />
+         </font>
+      </Text>
+      <Button fx:id="btnback" layoutX="735.0" layoutY="23.0" mnemonicParsing="false" onAction="#btnbackclick" prefHeight="40.0" prefWidth="40.0" style="-fx-background-color: #828d94;" text="☜" textFill="WHITE">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Button>
+   </children>
+</AnchorPane>
