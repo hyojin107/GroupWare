@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMapConfig
+	PUBLIC "-//ibatis.apache.org//DTD SQL Map Config 2.0//EN"
+	"http://ibatis.apache.org/dtd/sql-map-config-2.dtd">
+<sqlMapConfig>
+
+	<properties resource="dbinfo.properties"/>
+	
+	<settings cacheModelsEnabled="true" enhancementEnabled="true" 
+			lazyLoadingEnabled="true" maxRequests="128"
+			maxSessions="64" maxTransactions="16" useStatementNamespaces="true"/>
+
+	<typeAlias alias="BookVO" type="vo.Address_BookVO"/>
+	<typeAlias alias="MemberVO" type="vo.Address_MemberVO"/>	
+	<typeAlias alias="FileVO" type="vo.Attach_FileVO"/>
+	<typeAlias alias="AttendanceVO" type="vo.AttendanceVO"/>
+	<typeAlias alias="BoardVO" type="vo.BoardVO"/>
+	<typeAlias alias="CertificateVO" type="vo.CertificateVO"/>
+	<typeAlias alias="DepartmentsVO" type="vo.DepartmentsVO"/>
+	<typeAlias alias="FormVO" type="vo.Document_FormVO"/>
+	<typeAlias alias="ReceptionVO" type="vo.Email_ReceptionVO"/>
+	<typeAlias alias="EmailVO" type="vo.EmailVO"/>
+	<typeAlias alias="EmployeeVO" type="vo.EmployeeVO"/>
+	<typeAlias alias="NoticeVO" type="vo.NoticeVO"/>
+	<typeAlias alias="NoticeVO_join" type="vo.NoticeVO_join"/>
+	<typeAlias alias="OutsideVO" type="vo.OutsideVO"/>
+	<typeAlias alias="LineVO" type="vo.Payment_LineVO"/>
+	<typeAlias alias="PaymentVO" type="vo.PaymentVO"/>
+	<typeAlias alias="PlanVO" type="vo.PlanVO"/>
+	<typeAlias alias="PlanVO_join" type="vo.PlanVO_join"/>
+	<!-- <typeAlias alias="PositionVO" type="vo.PositionVO"/> -->
+	<typeAlias alias="ReferenceVO" type="vo.ReferenceVO"/>
+	<typeAlias alias="SpecsVO" type="vo.Salary_SpecsVO"/>
+	<typeAlias alias="SaveVO" type="vo.Temp_SaveVO"/>
+	<typeAlias alias="VacationVO" type="vo.VacationVO"/>
+	<typeAlias alias="Departments_joinVO" type="vo.Departments_joinVO"/>
+	<typeAlias alias="Boardemp_joinVO" type="vo.Boardemp_joinVO"/>
+	<typeAlias alias="MyVacationVO" type="vo.MyVacationVO"/>
+	<typeAlias alias="SangsinSearchVO" type="vo.SangsinSearchVO"/>
+	<typeAlias alias="PaymentListVO" type="vo.PaymentListVO"/>
+	<typeAlias alias="Address_joinVO" type="vo.Address_joinVO"/>
+	<typeAlias alias="Employee_joinVO" type="vo.Employee_joinVO"/>
+	<typeAlias alias="VacationCheckVO" type="vo.VacationCheckVO"/>
+	<typeAlias alias="EmailSendListVO" type="vo.EmailSendListVO"/>
+	
+	<typeAlias alias="calVo" type="vo.CalendarVO"/>
+	
+	
+	<!-- DB와 연동하기 ==> 위에서 읽어올 properties파일의 내용으로 설정한다. -->
+	<transactionManager type="JDBC">
+		<dataSource type="SIMPLE">
+			<property name="JDBC.Driver" value="${driver}"/>
+			<property name="JDBC.ConnectionURL" value="${url}"/>
+			<property name="JDBC.Username" value="${user}"/>
+			<property name="JDBC.Password" value="${pass}"/>
+		</dataSource>
+	</transactionManager>
+	
+	<sqlMap resource="ibatis/groupware.xml"/>
+	<sqlMap resource="ibatis/calendar.xml"/>
+	
+</sqlMapConfig>
+
+
+

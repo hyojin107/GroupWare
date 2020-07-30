@@ -1,0 +1,701 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap
+	PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"
+	"http://ibatis.apache.org/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="groupware">
+
+	
+
+	<select id="myaddressall" parameterClass="Map" resultClass="Address_joinVO"> <!-- 나의 주소록 출력 -->
+	select *
+			 from(
+		    	select A.*, rownum as RNUM 
+		        	from(
+		      	    	 SELECT distinct a.BOOK_NAME, o.OUT_NAME, o.OUT_EMAIL, o.OUT_TEL 
+ 						from ADDRESS_BOOK a,ADDRESS_MEMBER b,OUTSIDE
+ 						where a.BOOK_NO = b.BOOK_NO(+) and a.BOOK_NO = o.BOOK_NO(+)   
+		          	 	 ) A
+		       		where rownum &lt;= #end# <!-- 끝번호보다작은놈 -->
+		    )
+		    where RNUM &gt; #start#
+	</select>
+
+
+	<select id="addressall" parameterClass="Map" resultClass="Departments_joinVO"> <!-- 사내 전체 주소록 출력 -->
+		 select *
+			 from(
+		    	select A.*, rownum as RNUM 
+		        	from(
+		      	    	 select d.DEPARTMENT_NAME, e.EMP_NAME, e.EMP_EMAIL, e.EMP_PHONE, d.DEPARTMENT_TEL
+							  from EMPLOYEE e,DEPARTMENTS d 
+							 where e.department_no = d.DEPARTMENT_NO
+		          	 	 ) A
+		       		where rownum &lt;= #end# <!-- 끝번호보다작은놈 -->
+		    )
+		    where RNUM &gt; #start#
+	</select>
+
+
+	<select id="getDepartment" resultClass="DepartmentsVO">
+		select * from Departments
+	</select>
+	
+	
+	<!-- 기완 -->
+	<select id="getAllAddress" parameterClass="map" resultClass="EmployeeVO">
+	select * from(
+	    	select A.*, rownum as RNUM 
+	        	from(
+	        		 select b.* from address_member b
+	      	    	) A
+	       		where rownum &lt;= #end#
+	    )
+	    where RNUM &gt; #start#
+	</select>
+	
+	<select id="getDepAddress" parameterClass="int" resultClass="Departments_joinVO">
+		      	    	select distinct d.department_name, e.emp_name, e.emp_email, e.emp_phone, department_tel
+ 							from employee e, departments d
+ 							where d.department_no = e.department_no and e.department_no = #departname#
+	</select>
+	
+	<select id="getGroupt" parameterClass="int" resultClass="BookVO">
+	select * from address_book where book_no=#book_no#
+	</select>
+	
+	<insert id="addToMyAddress" parameterClass="MemberVO">
+	insert into address_member values (#book_no#,#emp_no#)
+	</insert>
+	
+
+	
+	<delete id="deleteMyAddress" parameterClass="map"> <!-- 사람 지우기 -->
+	delete from address_member where emp_no=#emp_no#
+	</delete>
+	
+	<delete id="deleteMyAddress2" parameterClass="int"> <!-- 외부인 지우기 -->
+	delete from address_member where book_no=#book_no#
+	</delete>
+	
+	<!-- 혜진 -->
+	<!-- 나의 주소록 출력 join 해서 주소록 이름도 출력 -->
+	<select id="getoutsideAll" parameterClass="Map" resultClass="BookVO"> 
+	   select * from(
+	    	select A.*, rownum as RNUM 
+	        	from(
+					select d.out_no, d.out_name, d.out_email, d.out_tel, d.out_etc, d.book_no, e.book_name, e.emp_no
+					from outside d, address_book e 
+					where d.book_no = e.book_no
+					order by d.out_no desc
+	      	    	) A
+	       		where rownum &lt;= #end# 
+	    )
+	    where RNUM &gt; #start#
+	</select>
+	
+	<insert id="addGroup" parameterClass="BookVO"> <!-- 그룹 추가 ok -->
+	insert into address_book values (SEQ_BOOKNO.NEXTVAL,#book_name#,#emp_no#)
+	</insert>
+	
+	<delete id="deleteGroup" parameterClass="int"> <!-- 그룹 지우기 ok  -->
+	delete from address_book where book_no=#book_no#
+	</delete>
+	
+	<insert id="insertOutside" parameterClass="OutsideVO"> <!-- 사람추가 ok -->
+	insert into outside values(SEQ_OUTNO.NEXTVAL,#out_name#,#out_email#,#out_tel#,#out_etc#,#book_no#)
+	</insert>
+	
+	<delete id="deleteOutside" parameterClass="int"> <!-- 사람 삭제  -->
+	delete from outside where out_no=#out_no#
+	</delete>
+
+	
+	
+	<insert id="insertStartDate" parameterClass="int">
+		insert into attendance values (seq_attno.nextval, sysdate, null, #emp_no#)
+	</insert>
+	
+	<update id="updateEndDate" parameterClass="int">
+		update attendance set att_end = sysdate where emp_no = #emp_no# 
+		   and EXTRACT(year FROM att_start) = extract(year from sysdate) 
+		   AND EXTRACT(MONTH FROM att_start) = EXTRACT(MONTH FROM sysdate) 
+		   AND EXTRACT(DAY FROM att_start) = EXTRACT(DAY FROM sysdate)
+	</update>
+	
+	<select id="selectStartDate" parameterClass="int" resultClass="int">
+		select count(*) from attendance where emp_no = #emp_no# 
+		   and EXTRACT(year FROM att_start) = extract(year from sysdate) 
+		   AND EXTRACT(MONTH FROM att_start) = EXTRACT(MONTH FROM sysdate) 
+		   AND EXTRACT(DAY FROM att_start) = EXTRACT(DAY FROM sysdate)
+	</select>
+	
+	<select id="getAttCalander" parameterClass="map" resultClass="AttendanceVO">
+	select to_char(att_start,'hh24:mi') as att_start, to_char(att_end,'hh24:mi') as att_end 
+  from attendance where (EXTRACT(year FROM att_start) = #YEAR# AND EXTRACT(MONTH FROM att_start) = #MONTH# AND EXTRACT(DAY FROM att_start) = #DAY# 
+  OR EXTRACT(YEAR FROM ATT_END) = #YEAR# AND EXTRACT(MONTH FROM ATT_END) = #MONTH# AND EXTRACT(DAY FROM att_start) = #DAY#) and emp_no = #emp_no#
+	</select>
+
+	<select id="getYearDep" parameterClass="map" resultClass="AttendanceVO">
+		select to_char(att_start,'hh24') as att_start, to_char(att_end,'hh24') as att_end, a.emp_no 
+		  from employee b, attendance a where a.emp_no = b.emp_no and department_no = #department_no# 
+		   and extract(year from att_start) = #year#
+	</select>
+	
+	<select id="getDepEmp" parameterClass="int" resultClass="EmployeeVO">
+		select * from employee where department_no = #department_no#
+	</select>
+	
+	<select id="getYear" parameterClass="map" resultClass="AttendanceVO">
+		select to_char(att_start,'mm hh24') att_start, to_char(att_end,'mm hh24') att_end from attendance where emp_no = #emp_no#
+		and (EXTRACT(year FROM att_start) = #year# or extract(year from att_end) = #year#)
+		order by att_start
+	</select>
+	
+	<!--선정 -->
+	
+	<select id="searchBoard" parameterClass="map" resultClass="Boardemp_joinVO">
+
+	 select distinct d.board_no, d.board_title, d.board_date, d.board_content, d.board_del, d.emp_no, e.EMP_NAME
+	 from EMPLOYEE e,board d, (select distinct a.*, b.emp_name from board a, employee b where a.emp_no = b.emp_no and board_title like '%text%' 
+	    or board_content like '%$text$%'
+        or b.emp_name like '%$text$%'
+        and a.board_del = 0) c
+	 where e.emp_no = d.emp_NO
+       and d.board_no = c.board_no
+	   and d.board_del=0
+	</select>
+	
+	<select id="boardjoinList" parameterClass="map" resultClass="Boardemp_joinVO">
+	
+    select * from(
+    
+	    	select A.*, rownum as RNUM 
+	        	from(
+	      	    	 select b.board_no, b.board_title,to_char(b.board_date,'yyyy/MM/dd') board_date ,b.board_content,b.board_del, e.emp_name, e.emp_no
+				    from board b,employee e
+				    where  b.emp_no = e.emp_no and b.board_del=0 order by board_no desc
+	      	    	) A
+	       		where rownum &lt;= #end#
+	    )
+	    where RNUM &gt; #start#
+		
+		
+	
+	</select>
+
+	
+	<insert id="insertBoard" parameterClass="Boardemp_joinVO">
+	insert into board values (seq_boardno.nextval,#board_title#,sysdate,
+						#board_content#,0,#emp_no#)
+	</insert>
+	
+	<select id="getAllBoard" parameterClass="map" resultClass="BoardVO">
+	select * from(
+	    	select A.*, rownum as RNUM 
+	        	from(
+	      	    	 select b.* from board b
+	      	    	) A
+	       		where rownum &lt;= #end# 
+	    )
+	    where RNUM &gt; #start#
+	</select>
+	
+	  
+	
+	<update id="updateBoard" parameterClass="Boardemp_joinVO">
+	update board set board_title=#board_title#,board_date=sysdate,
+				board_content=#board_content# where board_no = #board_no#
+	</update>
+	
+	<update id="deleteBoard" parameterClass="int">
+	update board set board_del = 1 where board_no=#board_no#
+	</update>
+	
+	
+	<insert id="insertCerti" parameterClass="CertificateVO">
+	 insert into certificate values (SEQ_cerno.NEXTVAL,#emp_no#,#doc_no#,sysdate,0,#cer_submit#,#cer_content#) 
+	</insert>
+	
+	<update id="updateCerti" parameterClass="map">
+	update certificate set cer_check = $cer_check$ where cer_no = #cer_no#
+	</update>
+	
+	<select id="getAllCertificate" parameterClass="int" resultClass="CertificateVO">
+		 select distinct c.cer_no, e.emp_name, g.grade_name, d.department_name,
+	 				 e.emp_reg, (to_char(e.emp_hire_date,'yyyy/MM/dd')||'~'||to_char(sysdate,'yyyy/MM/dd')) emp_hire_date, e.emp_addr,c.emp_no,
+       				 f.doc_name, c.cer_check, d.department_tel,to_char(c.cer_date,'yyyy/MM/dd') cer_date, c.cer_submit
+    	from certificate c, employee e, departments d, grade g, document_form f
+       	 where c.emp_no = e.emp_no
+        	and e.department_no = d.department_no
+        	and e.grade_no = g.grade_no
+        	and f.doc_no=c.doc_no
+        	and c.emp_no=#emp_no#
+        	order by cer_no desc
+	</select>
+	
+	<select id="IgetAllCertificate" resultClass="CertificateVO">
+	 select distinct c.cer_no, e.emp_name, g.grade_name, d.department_name,
+	 				 e.emp_reg, (to_char(e.emp_hire_date,'yyyy/MM/dd')||'~'||to_char(sysdate,'yyyy/MM/dd')) emp_hire_date, e.emp_addr,c.emp_no,
+       				 f.doc_name, c.cer_check, d.department_tel,to_char(c.cer_date,'yyyy/MM/dd') cer_date, c.cer_submit
+    	from certificate c, employee e, departments d, grade g, document_form f
+       	 where c.emp_no = e.emp_no
+        	and e.department_no = d.department_no
+        	and e.grade_no = g.grade_no
+        	and f.doc_no=c.doc_no
+        	order by cer_no desc
+	</select>
+	
+	<select id="AllCertificate" parameterClass="map" resultClass="CertificateVO">
+	 select distinct c.cer_no, e.emp_name, g.grade_name, d.department_name,
+	 				 e.emp_reg, to_char(e.emp_hire_date,'yyyy/MM/dd') emp_hire_date, e.emp_reg, e.emp_addr,c.emp_no,
+       				 f.doc_name, c.cer_check, d.department_tel, to_char(c.cer_date,'yyyy/MM/dd') cer_date,c.cer_submit
+    	from certificate c, employee e, departments d, grade g, document_form f
+       	 where c.emp_no = e.emp_no
+        	and e.department_no = d.department_no
+        	and e.grade_no = g.grade_no
+        	and f.doc_no=c.doc_no
+        	and (c.cer_check = #churistate#)
+        	order by cer_no desc
+	</select>
+	
+	
+	<!-- 메일 부분 -->
+	
+	<select id="getSendMailList" parameterClass="map" resultClass="EmailSendListVO"> 
+	   select *
+		 from(
+	    	select A.*, rownum as RNUM 
+	        	from(
+						select e.email_no, e.email_title, e.email_content, e.emp_no, department_name, email_rec_addr,
+							   to_char(e.email_date, 'yyyy/MM/DD') ||' ' || to_char(e.email_date, 'HH24:MI') email_date
+						  from email e, email_reception r, 
+						  	   (select d.department_name, e.emp_no from departments d, employee e 
+						  	   	 where d.department_no = e.department_no) a
+						 where e.email_no = r.email_no
+						   and e.emp_no = a.emp_no
+						   and e.emp_no = #empNo#
+						   and e.email_del = 0
+						 order by email_date desc 
+	          	 	 ) A
+	       		where rownum &lt;= #end#
+	    )
+	    where RNUM &gt; #start#
+	</select>
+	
+	<select id="getLastEmailNo" parameterClass="int" resultClass="int">
+		select email_no from email where emp_no = #empNo# and rownum = 1 order by email_no desc
+	</select>
+	
+	<insert id="insertEmailReception" parameterClass="ReceptionVO">
+		insert into email_reception values (#email_no#, #email_rec_addr#)
+	</insert>
+	
+	<insert id="sendEmail" parameterClass="EmailVO">
+	insert into email values (SEQ_EMAILNO.NEXTVAL,#email_title#, #email_content#, 0,#emp_no#, sysdate)
+	</insert>
+	
+	<insert id="sendEmail2" parameterClass="FileVO"> <!-- 첨부파일 -->
+	<!--  insert into ATTACH_FILE values (SEQ_EMAILNO.NEXTVAL,#file_name#,) -->
+	</insert>
+	
+	<select id="getAllEmail" parameterClass="map" resultClass="EmailVO"> <!-- 보낸메일 모두 보기 -->
+	select * from email where emp_no=#emp_no#
+	</select>
+	
+	<update id="deleteEmail" parameterClass="int">
+	update email set email_del=1 where EMAIL_NO=#email_no#
+	</update>
+	
+	<select id="searchEmail" parameterClass="map" resultClass="EmailVO"> <!--메일 내용이나 제목으로 메일검색 -->
+	select * from email where email_content like '%$text$%' or  email_title like '%$text$%'
+	</select>
+	
+	<insert id="insertEmp" parameterClass="EmployeeVO"> <!-- 신규사원 등록 -->
+	insert into employee values(to_char(sysdate, 'YYYYMM') || lpad(seq_empNo.nextval,3,0),#department_no#,#grade_no#,null,#emp_name#,'aaa0001',
+                            #emp_reg#,null,#emp_email#,sysdate,
+                                    null,#emp_salary#,#emp_phone#,#emp_addr#,15)
+	</insert>
+	
+	<update id="gikwonenroll" parameterClass="EmployeeVO"> <!-- 임직원 정보 수정 등록 -->
+		update employee set
+				emp_pass=#emp_pass#, emp_name = #emp_pass#, emp_email=#emp_email#, emp_hire_date=#emp_hire_date#,
+				emp_retire_date=#emp_retire_date#, emp_salary=#emp_salary#, emp_reg=#emp_reg#, emp_addr=#emp_addr#
+		where emp_no = #emp_no#
+	</update>
+	
+	
+	
+	<update id="updateEmp" parameterClass="map">
+		update employee set $field$ = #data# where emp_no = #empNo#
+	</update>
+	
+	<!-- <update id="updateVacCnt" parameterClass="map">
+		update employee set emp_vac_cnt = (select emp_vac_cnt from employee where emp_no = #empNo#) - $vacCnt$
+ 		 where emp_no = #empNo#;
+	</update> -->
+	
+	
+	
+	<select id="kido" parameterClass="map" resultClass="Employee_joinVO">
+	select *
+			 from(
+		    	select A.*, rownum as RNUM 
+		        	from(
+		      	    	select distinct e.emp_no,e.emp_name,d.department_name,g.grade_name, e.emp_phone, d.department_tel, e.emp_email, e.department_no, e.grade_no,
+		      	    		   e.emp_reg, e.emp_pass, e.emp_addr, e.emp_salary, to_char(e.emp_retire_date,'yyyy/MM/dd') emp_retire_date, to_char(e.emp_hire_date, 'yyyy/MM/dd') emp_hire_date
+						from employee e, departments d, grade g
+						where d.department_no =e.department_no and e.grade_no = g.grade_no
+		          	 	 ) A
+		       		where rownum &lt;= #end# <!-- 끝번호보다작은놈 -->
+		    )
+		    where RNUM &gt; #start#
+	</select>
+		
+	
+	<select id="allemplist" parameterClass="map" resultClass="Employee_joinVO">
+	select *
+			 from(
+		    	select A.*, rownum as RNUM 
+		        	from(
+		      	    	select distinct a.EMP_NO , a.EMP_NAME, b.DEPARTMENT_NAME, c.GRADE_NAME 
+ 						from EMPLOYEE a, DEPARTMENTS b, GRADE c
+ 						where a.department_no = b.department_no(+) and a.grade_no = c.grade_no(+)
+		          	 	 ) A
+		       		where rownum &lt;= #end# <!-- 끝번호보다작은놈 -->
+		    )
+		    where RNUM &gt; #start#
+	
+	</select>
+	
+	<select id="getAllEmp" resultClass="EmployeeVO">
+		select EMP_NO,
+				nvl(DEPARTMENT_NO,0) DEPARTMENT_NO,
+				GRADE_NO,
+				EMP_SIGN,
+				EMP_NAME,
+				EMP_PASS,
+				EMP_REG,
+				EMP_PHOTO,
+				EMP_EMAIL,
+				EMP_HIRE_DATE,
+				EMP_RETIRE_DATE,
+				EMP_SALARY,
+				EMP_PHONE,
+				EMP_ADDR,
+				EMP_VAC_CNT
+		 from employee
+		order by 1 desc
+	</select>
+	
+	<select id="searchEmp" parameterClass="map" resultClass="Employee_joinVO">
+	select * from employee e, departments d, grade g where e.department_no = d.department_no and e.grade_no = g.grade_no and $field$ like '%$text$%'
+	</select>
+	
+	<select id="getEmpLogin" parameterClass="int" resultClass="EmployeeVO">
+		select * from employee where emp_no = #emp_no#
+	</select>
+	
+	<select id="getAllPayLineName" parameterClass="int" resultClass="SangsinSearchVO">
+		 select distinct a.pay_no, a.pay_order, a.pay_check, a.emp_no, b.emp_name, c.grade_name, d.department_name 
+		   from payment_line a, employee b, grade c, departments d 
+		  where a.emp_no = b.emp_no
+		    and b.grade_no = c.grade_no
+		    and b.department_no = d.department_no(+)
+		    and a.pay_no = #pay_no#
+		  order by pay_order
+	</select>
+	
+	<select id="getSign" parameterClass="int" resultClass="PaymentListVO">
+		select * from employee where emp_no = #emp_no#
+	</select>
+	
+	
+	
+	<select id="getAllPay" parameterClass="int" resultClass="PaymentListVO">
+    	select distinct a.*, d.emp_name, d.department_no from payment a, payment_line b, reference c, employee d
+		 where a.pay_no = b.pay_no(+)
+		   and  b.pay_no = c.pay_no(+)
+		   and a.emp_no = d.emp_no
+		   and (a.doc_no = 4 or a.doc_no = 5)
+		   and (a.emp_no = #emp_no#
+		    or b.emp_no = #emp_no#
+		    or c.emp_no = #emp_no#)
+		 order by a.pay_no desc
+	</select>
+	
+	
+	
+	<select id="getAllRef" parameterClass="int" resultClass="SangsinsearchVO">
+		select distinct a.emp_no, b.emp_name, c.grade_name, d.department_name from reference a, employee b, grade c, departments d
+		 where a.emp_no = b.emp_no
+		   and b.grade_no = c.grade_no
+		   and b.department_no = d.department_no(+)
+		   and pay_no = #pay_no#
+	</select>
+	
+	<select id="getAllPayLine" parameterClass="int" resultClass="LineVO">
+		select * from payment_line where pay_no = #pay_no#
+	</select>
+	
+	<select id="getComboPay" parameterClass="map" resultClass="PaymentListVO"> <!-- 결재완료는 pay_order 3 pay_check 1   반려는 1, 2 -->
+    	select distinct a.*, d.emp_name, d.department_no from payment a, payment_line b, reference c, employee d
+		 where a.pay_no = b.pay_no(+)
+		   and  b.pay_no = c.pay_no(+)
+		   and a.emp_no = d.emp_no
+		   and (a.doc_no = 4 or a.doc_no = 5)
+		   and a.pay_state = #pay_state#
+		   and (a.emp_no = #emp_no#
+		    or b.emp_no = #emp_no#
+		    or c.emp_no = #emp_no#)
+		 order by a.pay_no desc
+	</select>
+	
+	<select id="getDocument" resultClass="FormVO">
+		select * from document_form where doc_no = 4 or doc_no = 5
+	</select>
+	
+	<select id="getCheckList" parameterClass="int" resultClass="LineVO">
+		select a.* 
+		  from payment_line a, 
+		       (select * from payment_line where emp_no = #emp_no# and pay_check = 0) b,
+		       payment c
+		 where a.pay_no = b.pay_no
+		   and c.pay_no = b.pay_no
+		   and (c.doc_no = 4 or doc_no = 5)
+		 order by a.pay_no, a.pay_order
+	</select>
+	
+	<select id="getPayListNo" parameterClass="int" resultClass="PaymentListVO">
+		select a.*, b.emp_name, b.department_no, b.grade_no
+		  from payment a, employee b
+		 where a.emp_no = b.emp_no
+		   and a.pay_no = #pay_no#
+	</select>
+	
+	<update id="check" parameterClass="map">
+		update payment_line set pay_check = #check# where pay_no = #pay_no# and pay_order = #pay_order#
+	</update>
+	
+	<update id="check2" parameterClass="map">
+		update payment set pay_state = #check# where pay_no = #pay_no#
+	</update>
+	
+	<select id="getComboRef" parameterClass="map" resultClass="ReferenceVO">
+		select * from employee order by grade_no desc
+	</select>
+	
+	<select id="getComboPayLine" parameterClass="map" resultClass="LineVO">
+		select * from employee order by grade_no desc
+	</select>
+	
+	<select id="searchPay" parameterClass="map" resultClass="LineVO">
+		
+	</select>
+	
+	<select id="writeNo" parameterClass="int" resultClass="int">
+		select * from (select a.pay_no from payment a where emp_no = #emp_no#  order by a.pay_no desc) where rownum = 1
+	</select>
+	
+	<insert id="insertPay" parameterClass="PaymentVO">
+		insert into payment values (seq_payno.nextval, #emp_no#, #doc_no#, #pay_title#, #pay_content#, sysdate, 0)
+	</insert>
+	
+	<insert id="insertRef" parameterClass="ReferenceVO">
+		insert into reference values (#pay_no#,#emp_no#)
+	</insert>
+	
+	<insert id="insertPayLine" parameterClass="LineVO">
+		insert into payment_line values (#pay_no#,#pay_order#,0,#emp_no#)
+	</insert>
+	
+	<select id="searchName" parameterClass="String" resultClass="SangsinSearchVO">
+		select a.emp_no, a.emp_name, b.department_name, c.grade_name 
+		  from employee a, departments b, grade c
+		 where a.department_no = b.department_no(+)
+		   and a.grade_no = c.grade_no
+		   and emp_name like '%$name$%' order by a.grade_no desc
+	</select>
+	
+	<update id="payCheck" parameterClass="LineVO">
+		update payment_line set pay_check = $$
+	</update>
+	
+	<!-- 혜진 -->
+   <insert id="insertNotice" parameterClass="NoticeVO_join">
+      insert into notice
+            values(SEQ_notiNO.nextval,#noti_title#,sysdate,#noti_content#,0,#emp_no#)
+   </insert>
+   
+   <select id="getAllNotice" parameterClass="map" resultClass="NoticeVO">
+      select *
+       from(
+          select A.*, rownum as RNUM 
+              from(
+                    select * from notice where noti_del=0 order by noti_no desc
+                     ) A
+                where rownum &lt;= #end# <!-- 끝번호보다작은놈 -->
+       )
+       where RNUM &gt; #start#
+   </select>
+   
+   <select id="getAllNotiEmp" parameterClass="map" resultClass="NoticeVO_join">
+           select *
+       from(
+          select A.*, rownum as RNUM 
+              from(
+                    select d.noti_no, d.noti_title, to_char(d.noti_date,'yyyy/MM/dd') noti_date, d.noti_content, d.noti_del, d.emp_no, e.EMP_NAME
+                    from EMPLOYEE e,notice d 
+                    where e.emp_no = d.emp_NO and d.noti_del=0 order by noti_no desc
+                     ) A
+                where rownum &lt;= #end# 
+       )
+       where RNUM &gt; #start#
+   </select>
+   
+   <update id="updateNotice" parameterClass="NoticeVO_join">
+      update notice set noti_title=#noti_title#, noti_content=#noti_content#, noti_date=sysdate
+      where noti_no=#noti_no#
+   </update>
+   
+   <update id="deleteNotice" parameterClass="int">
+      update notice set noti_del=1 where noti_no=#noti_no#
+   </update>
+   
+   <select id="searchNotice" parameterClass="map" resultClass="NoticeVO_join">
+
+   select distinct d.noti_no, d.noti_title, d.noti_date, d.noti_content, d.noti_del, d.emp_no, e.EMP_NAME
+    from EMPLOYEE e,notice d, (select distinct * from notice a, employee b where noti_title like '%$text$%' 
+       or noti_content like '%$text$%') c
+    where e.emp_no = d.emp_NO and c.noti_del = 0 
+       and d.noti_no = c.noti_no
+      order by noti_no desc  
+
+   </select>
+	
+	<!-- 혜진 -->
+	<select id="getAllPlan" parameterClass="map" resultClass="PlanVO">
+	select *
+		 from(
+	    	select A.*, rownum as RNUM 
+	        	from(
+	      	    	 select * from plan order by plan_no desc
+	          	 	 ) A
+	       		where rownum &lt;= #end# <!-- 끝번호보다작은놈 -->
+	    )
+	    where RNUM &gt; #start#
+	</select>
+	    
+	<select id="getAllPlanEmp" parameterClass="map" resultClass="PlanVO_join">
+	 select * from(
+    
+	    	select A.*, rownum as RNUM 
+	        	from(
+	      	    	select d.plan_no, d.plan_title, d.plan_content, d.plan_date, 
+	     			to_char(d.plan_start,'yyyy/MM/dd') plan_start, 
+	      	    	to_char(d.plan_end,'yyyy/MM/dd') plan_end, d.plan_del, d.emp_no, e.emp_name,
+    				(d.plan_end-d.plan_start) as plan_cnt
+    				from employee e, plan d
+    				where e.emp_no = d.emp_no and d.plan_del=0 order by plan_no desc
+	      	    	) A
+	       		where rownum &lt;= #end#
+	    )
+	    where RNUM &gt; #start#
+	</select>
+	
+	<insert id="insertPlan" parameterClass="PlanVO_join">
+	 insert into plan values(SEQ_PLANNO.NEXTVAL, #plan_title#, #plan_content#,
+	 				   sysdate,to_date(#plan_start#),to_date(#plan_end#),0,#emp_no#)
+	</insert>
+	
+	<update id="updatePlan" parameterClass="PlanVO_join">
+	 update plan set plan_date=sysdate, plan_start=#plan_start#, plan_end=#plan_end#,
+	 				 plan_title=#plan_title#, plan_content=#plan_content#
+	 where plan_no=#plan_no#
+	</update>
+
+	<update id="deletePlan" parameterClass="int">
+	 update plan set plan_del=1 where plan_no=#noti_no#
+	</update>
+	
+	
+	
+	<select id="getAllSalary" parameterClass="int" resultClass="SpecsVO">
+	 select emp_no,sal_date,salary,doc_no, 
+	 to_char(sal_date,'yyyymm') salDate,
+	 to_char(sal_date, 'yyyy' ) salYear,
+	 to_char(sal_date, 'mm') salMonth,
+	 to_char(sal_date, 'yyyy')||'년 '||to_char(sal_date, 'MM')||'월 급여명세서' sal_title 
+	 from salary_specs 
+	 where emp_no=#emp_no#
+	</select>
+
+	<insert id="insertTempSave" parameterClass="SaveVO">
+		insert into temp_save values (#emp_no#, #doc_no#, #pay_line#, #ref_line#, #temp_title#, #temp_content#)
+	</insert>
+	
+	<update id="updateTempSave" parameterClass="SaveVO">
+		update temp_save set doc_no = #doc_no#, pay_line = #pay_line#, ref_line = #ref_line#,
+				temp_title =  #temp_title#, temp_content = #temp_content# where emp_no = #emp_no#
+	</update>
+	
+	<delete id="deleteTempSave" parameterClass="int">
+		delete temp_save where emp_no = #emp_no#
+	</delete>
+	
+	<select id="getTempSave" parameterClass="int" resultClass="SaveVO">
+		select * from temp_save where emp_no = #emp_no#
+	</select>
+	
+	<select id="getCheckVacList" parameterClass="int" resultClass="LineVO">
+			select a.* 
+		  from payment_line a, 
+		       (select * from payment_line where emp_no = #emp_no# and pay_check = 0) b,
+		       payment c
+		 where a.pay_no = b.pay_no
+		   and c.pay_no = b.pay_no
+		   and c.doc_no = 2
+         order by a.pay_no, a.pay_order
+	</select>
+	
+	<select id="getVacListNo" parameterClass="int" resultClass="VacationCheckVO">
+		select distinct a.*, b.vac_end_date, b.vac_start_date, b.vac_form, c.emp_name, d.department_name
+		  from payment a, vacation b, employee c, departments d,
+		       (select * from payment_line where pay_no = #pay_no# and pay_check = 0) e
+	 	 where e.pay_no = a.pay_no
+	 	   and b.pay_no = a.pay_no
+		   and a.emp_no = c.emp_no
+		   and c.department_no = d.department_no
+	</select>
+	
+	<select id="getAllVacation" parameterClass="map" resultClass="MyVacationVO">
+		select *
+		 from(
+	    	select A.*, rownum as RNUM 
+	        	from(
+	      	    	 select e.emp_name, p.pay_date, e.emp_no,
+	      	    	 
+	      	    	 		(to_char(v.vac_start_date,'YYYY.MM.DD')||' ~ '|| to_char(v.vac_end_date,'YYYY.MM.DD')) vac_date, 
+					        (v.vac_end_date - v.vac_start_date) vac_cnt, pay_state, v.vac_form
+					   from vacation v, employee e, payment p
+					  where v.pay_no = p.pay_no
+					    and p.emp_no = e.emp_no
+					  order by 2 desc
+	          	 	 ) A
+	       		where rownum &lt;= #end#
+	    )
+	    where RNUM &gt; #start#
+	</select>
+	
+	<insert id="insertVacation" parameterClass="VacationVO">
+		insert into vacation values (#pay_no#, #vac_start_date#, #vac_end_date#, #vac_form#)
+	</insert>
+	
+	<update id="updateVacCheck" parameterClass="map">
+	</update>
+	
+	
+</sqlMap>
+
+
+
