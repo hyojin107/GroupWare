@@ -45,25 +45,28 @@ Oracle DB와 iBatis를 이용하여 데이터를 저장하였습니다.
 <img width="800" alt="받은메일함" src="https://user-images.githubusercontent.com/49690185/106571376-6b90cf80-657a-11eb-908d-9ee9edfd63b4.png">
 - javaMail API를 사용하여 받은 메일함 출력
 - 받은 메일함 리스트에서 목록을 더블 클릭 시, 상세페이지로 이동
+
 <br/>
 
 <img width="800" alt="메일보내기" src="https://user-images.githubusercontent.com/49690185/106571566-a98df380-657a-11eb-9655-585178a11148.png">
 - 메일 쓰기 시, 받는 사람이 여러명일 경우 콤마(,)로 구분하여 여러명에게 전송 가능
 - 보낸 메일함에서 보낸 메일을 확인할 수 있다.
-<br/>
+
+<br/><br/>
 
 🔹 **휴가** <br/>
 <img width="800" alt="휴가 조회" src="https://user-images.githubusercontent.com/49690185/106572583-f2927780-657b-11eb-9316-2fde0086a14d.png">
 - '나의 휴가'에서 본인이 신청한 휴가 내역을 조회
-- 관리자 권한(인사팀)으로 로그인 했을 경우에만 '휴가 승인/반려'버튼과 '전직원 휴가 현황'버튼이 보여집니다.
+- 관리자 권한(인사팀)으로 로그인 했을 경우에만 '휴가승인/반려'버튼과 '전직원 휴가 현황'버튼이 보여집니다.
 - 관리자의 경우에만 전 사원의 휴가 현황을 조회 가능
+
 <br/>
 
 <img width="800" alt="휴가 신청" src="https://user-images.githubusercontent.com/49690185/106572885-55840e80-657c-11eb-8ca2-79038acc4115.png">
 - 휴가신청 시, 결재라인을 3명까지 정해야 하며, 콤보박스를 통해 휴가 종류를 선택한 뒤 휴가 신청을 한다.
 - 관리자 권한(인사팀)으로 로그인 할 경우에만 승인/반려가 가능하다.
 
-<br/>
+<br/><br/>
 
 🔹 **사원 관리** <br/>
 <img width="800" alt="사원관리" src="https://user-images.githubusercontent.com/49690185/106573666-46519080-657d-11eb-8ed1-d6a2c597d5c4.png">
